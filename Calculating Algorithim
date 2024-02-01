@@ -1,0 +1,37 @@
+public class AcuityCalculator {
+
+    public static int calculateAcuity(int age, String condition) {
+        int acuityScore = 0;
+
+        if (age >= 65) {
+            acuityScore += 2;
+        } else if (age <= 12) {
+            acuityScore += 1;
+        }
+
+        acuityScore += getConditionScore(condition);
+
+        return acuityScore;
+    }
+
+    private static int getConditionScore(String condition) {
+        if (condition == null) return 0;
+
+        return switch (condition) {
+            case "Flu" -> 1;
+            case "Allergy" -> 1;
+            case "Migraine" -> 1;
+            case "Broken Arm" -> 2;
+            case "Asthma" -> 2;
+            case "Bronchitis" -> 2;
+            case "Diabetes" -> 3;
+            case "Hypertension" -> 3;
+            case "Pneumonia" -> 4;
+            default -> 0;
+                
+                
+                
+            
+        };
+    }
+}
