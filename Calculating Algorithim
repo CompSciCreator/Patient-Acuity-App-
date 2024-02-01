@@ -36,4 +36,4 @@ public class AcuityCalculator {
     }
 }
 
-// Things to add -> Fall risk variable(true or false) Dietary variable(None, Moderate, Severe) 
+// Things to add -> Fall risk variable(true or false) Dietary variable(None, Moderate, Severe) more condition cases, option for multiple conditions
