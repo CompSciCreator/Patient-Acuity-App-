@@ -1,0 +1,86 @@
+//styles.css (CSS Styling):
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    position: relative;
+    overflow: hidden;
+}
+
+.header-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    z-index: 10;
+}
+
+.header-line {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #007bff;
+    z-index: 5;
+}
+
+.diagonal-line {
+    position: absolute;
+    top: 50%;
+    left: -25%;
+    width: 150%;
+    height: 4px;
+    background-color: #007bff;
+    transform: rotate(-45deg);
+    z-index: 0;
+}
+
+.index-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-input {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type=number] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+input[type=submit] {
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #4cae4c;
+}
