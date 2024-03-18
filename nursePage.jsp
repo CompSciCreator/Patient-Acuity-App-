@@ -29,7 +29,7 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #4CAF50; /* Green */
+            background-color: #4CAF50;
             border: none;
             color: white;
             padding: 15px 20px;
@@ -43,7 +43,7 @@
         .certifications {
             text-align: center;
             margin-top: 10px;
-            list-style-position: inside; /* Center the bullet points */
+            list-style-position: inside;
         }
     </style>
 </head>
