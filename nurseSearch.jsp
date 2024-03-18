@@ -52,13 +52,11 @@
             background-color: #45a049;
         }
 
-        /* Align dropdown and search box horizontally */
         .search-container {
             display: flex;
             align-items: center;
         }
 
-        /* Add margin to the right of dropdown for spacing */
         .search-dropdown {
             margin-right: 5px;
         }
