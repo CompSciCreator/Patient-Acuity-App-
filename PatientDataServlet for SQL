@@ -1,0 +1,83 @@
+
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+public class PatientDataServlet extends HttpServlet {
+    private String jdbcURL = "jdbc:mysql://localhost:3306/AcuityApp";
+    private String jdbcUsername = "";// Your username
+    private String jdbcPassword = "password";//Your password i just used password
+    
+
+    @Override
+public void init() throws ServletException {
+    super.init();
+    try {
+        // Manually load the MySQL JDBC driver
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        System.out.println("MySQL JDBC Driver successfully loaded!");
+    } catch (ClassNotFoundException e) {
+        System.out.println("MySQL JDBC Driver not found.");
+        throw new ServletException("JDBC Driver not found.", e);
+    }
+}
+
+ 
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Extract form data
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        int age = Integer.parseInt(request.getParameter("age"));
+        String gender = request.getParameter("gender");
+        double weight = Double.parseDouble(request.getParameter("weight"));
+        double temperature = Double.parseDouble(request.getParameter("temperature"));
+        String bloodPressureSYS = request.getParameter("bloodpressureSYS");
+        String bloodPressureDIA = request.getParameter("bloodpressureDIA");
+        int heightFeet = Integer.parseInt(request.getParameter("heightfeet"));
+        int heightInch = Integer.parseInt(request.getParameter("heightinch"));
+        String medication1 = request.getParameter("medication1");
+        String medication2 = request.getParameter("medication2");
+        String medication3 = request.getParameter("medication3");
+        String notes = request.getParameter("notes");
+
+        response.setContentType("text/html");
+
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/AcuityApp", //YourUsername , "password")) {
+            String sql = "INSERT INTO `patient data` (firstName, lastName, age, gender, weight, temperature, bloodPressureSYS, bloodPressureDIA, heightFeet, heightInch, medication1, medication2, medication3, notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                //Insert into your table name like `patient data`
+            
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, firstName);
+                statement.setString(2, lastName);
+                statement.setInt(3, age);
+                statement.setString(4, gender);
+                statement.setDouble(5, weight);
+                statement.setDouble(6, temperature);
+                statement.setString(7, bloodPressureSYS);
+                statement.setString(8, bloodPressureDIA);
+                statement.setInt(9, heightFeet);
+                statement.setInt(10, heightInch);
+                statement.setString(11, medication1);
+                statement.setString(12, medication2);
+                statement.setString(13, medication3);
+                statement.setString(14, notes);
+
+                int result = statement.executeUpdate();
+                if (result > 0) {
+                    response.getWriter().println("Patient information saved successfully.");
+                } else {
+                    response.getWriter().println("Failed to save patient information.");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.getWriter().println("Error saving patient information: " + e.getMessage());
+        }
+    }
+}
