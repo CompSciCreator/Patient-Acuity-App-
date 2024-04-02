@@ -1,0 +1,32 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import java.util.Properties;
+
+public class DatabaseUtility {
+    private final String jdbcURL;
+    private final String jdbcUsername;
+    private final String jdbcPassword;
+
+    public DatabaseUtility(String jdbcURL, String jdbcUsername, String jdbcPassword) {
+        this.jdbcURL = "jdbc:mysql://localhost:3306/AcuityApp";
+        this.jdbcUsername = "";//Your username
+        this.jdbcPassword = "password";
+    }
+
+    public Connection getConnection() {
+        Connection connection = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+        } catch (SQLException e) {
+            // Handle SQL exception
+
+        } catch (ClassNotFoundException e) {
+            // Handle class not found exception
+
+        }
+        return connection;
+    }
+}
