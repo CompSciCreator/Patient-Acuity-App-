@@ -4,46 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Information Form</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .form-container, .grid {
-            text-align: center;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 20px; 
-            width: 100%; 
-            max-width: 1200px; 
-            margin: auto; 
-        }
-
-        input, select, textarea {
-            margin: 10px;
-            padding: 8px;
-        }
-
-        .grid-item {
-            background-color: #f0f0f0;
-            padding: 10px;
-            border-radius: 5px; 
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body onload="generateNurseForms()">
+<body onload="generateNurseForms()" class="bg-gray-100 min-h-screen flex flex-col justify-center">
 
-    <h1>Enter Nurse Information</h1>
-    <div id="nurseFormsContainer" class="form-container"></div> 
+    <h1 class="text-3xl font-bold mb-8 text-center">Enter Nurse Information</h1>
+    <div id="nurseFormsContainer" class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"></div> 
 
     <script>
         function generateNurseForms() {
@@ -53,26 +19,26 @@
 
             for (let i = 0; i < numNurses; i++) {
                 const gridItem = document.createElement('div');
-                gridItem.className = 'grid-item';
+                gridItem.className = 'p-4 bg-white shadow rounded';
                 gridItem.innerHTML = `
-                    <h3>Nurse ${i + 1}</h3>
+                    <h3 class="text-lg font-semibold mb-4">Nurse ${i + 1}</h3>
                     <form id="nurseForm${i}" onsubmit="event.preventDefault(); submitNurseForm(${i});">
-                        <input type="text" id="firstName${i}" placeholder="First Name" required><br>
-                        <input type="text" id="lastName${i}" placeholder="Last Name" required><br>
-                        <input type="number" id="age${i}" placeholder="Age" required><br>
-                        <select id="gender${i}" required>
+                        <input type="text" id="firstName${i}" placeholder="First Name" required class="input"><br>
+                        <input type="text" id="lastName${i}" placeholder="Last Name" required class="input"><br>
+                        <input type="number" id="age${i}" placeholder="Age" required class="input"><br>
+                        <select id="gender${i}" required class="input">
                             <option value="">Select Gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select><br>
-                        <select id="certification${i}" required>
+                        <select id="certification${i}" required class="input">
                             <option value="" disabled selected>Select a certification</option>
                             <option value="C1">Certification 1</option>
                             <option value="C2">Certification 2</option>
                             <option value="C3">Certification 3</option>
                         </select><br>
-                        <textarea id="notes${i}" placeholder="Notes"></textarea><br>
-                        <button type="submit">Save Nurse ${i + 1} Info</button>
+                        <textarea id="notes${i}" placeholder="Notes" class="input"></textarea><br>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Save Nurse ${i + 1} Info</button>
                     </form>
                 `;
                 container.appendChild(gridItem);
@@ -81,12 +47,13 @@
 
         function submitNurseForm(index) {
             const formId = `nurseForm${index}`;
-         
             alert(`Nurse ${index + 1} information saved. (Implement saving logic)`);
         }
     </script>
 
-    <button onclick="window.location.href='Index.jsp';" style="margin-top: 20px;">Back to Index</button>
+    <button onclick="window.location.href='Index.jsp';" style="margin-top: 20px;" class="bg-gray-500 text-white px-4 py-2 rounded mt-8 mx-auto block">Back to Index</button>
 
 </body>
 </html>
+
+

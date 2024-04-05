@@ -4,78 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-        }
-
-        .search-container {
-            text-align: center;
-        }
-
-        .search-input {
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px 0 0 4px;
-            box-sizing: border-box;
-        }
-
-        .search-dropdown {
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 0;
-            box-sizing: border-box;
-        }
-
-        .search-button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            box-sizing: border-box;
-        }
-
-        .search-button:hover {
-            background-color: #45a049;
-        }
-
-        /* Align dropdown and search box horizontally */
-        .search-container {
-            display: flex;
-            align-items: center;
-        }
-
-        /* Add margin to the right of dropdown for spacing */
-        .search-dropdown {
-            margin-right: 5px;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-200">
 
-<div class="search-container">
-    <select class="search-dropdown">
-        <option value="nurseName">Name</option>
-        <option value="nurseAge">Age</option>
-        <option value="nurseGender">Gender</option>
-        <option value="nurseCertification">Certifications</option>
-    </select>
-    <input type="text" class="search-input" placeholder="Enter nurse information...">
-    <button class="search-button" onclick="openPage('nursePage.jsp')">Search</button>
-    <%-- nursePage.jsp is just a placeholder, page will open to the info of the nurse searched--%>
+<div class="flex justify-center items-center h-screen">
+    <div class="search-container">
+        <select class="search-dropdown px-4 py-2 text-lg border border-gray-300 rounded-l-md w-36 h-12">
+            <option value="nurseName">Name</option>
+            <option value="nurseAge">Age</option>
+            <option value="nurseGender">Gender</option>
+            <option value="nurseCertification">Certifications</option>
+        </select>
+        <input type="text" class="search-input px-4 py-2 text-lg border border-gray-300 rounded-none" placeholder="Enter nurse information...">
+        <button class="search-button px-6 py-2 text-lg bg-green-500 text-white border border-green-500 rounded-r-md transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-400" onclick="openPage('patientPage.jsp')">Search</button>
+        <%-- nursePage.jsp is just a placeholder, page will open to the info of the nurse searched--%>
+    </div>
 </div>
 
 <script>
@@ -86,3 +30,4 @@
 
 </body>
 </html>
+
